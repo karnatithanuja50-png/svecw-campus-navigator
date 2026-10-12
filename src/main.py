@@ -32,8 +32,40 @@ def main():
     # TODO: 5. Call find_shortest_route(ROUTES, source, destination)
     
     # TODO: 6. Call display_route(route, distance)
-    pass
+    # 1. Get locations
+    locations = get_locations()
 
+# 2. Print available locations
+    print("\nAvailable Campus Locations:")
+    for location in locations:
+        print("-", location)
+
+# 3. Ask the user for source and destination
+    source = input("\nEnter starting location: ").strip()
+    destination = input("Enter destination: ").strip()
+
+# 4. Validate input
+    if not source or not destination:
+        print("Error: Location names cannot be empty.")
+        return 
+
+    if source not in locations:
+        print(f"Error: '{source}' is not a valid location.")
+        return
+
+    if destination not in locations:
+        print(f"Error: '{destination}' is not a valid location.")
+        return
+
+    if source == destination:
+        display_route([source], 0)
+        return
+
+# 5. Find the shortest route
+    route, distance = find_shortest_route(ROUTES, source, destination)
+
+# 6. Display the result
+    display_route(route, distance)
 
 if __name__ == "__main__":
     main()

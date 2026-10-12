@@ -20,6 +20,14 @@ def display_route(route, distance):
         distance (int/float): The total distance of the route.
     """
     # TODO: Implement the logic to format and print the route and distance
-    pass
+    
+    if not route:
+        print("No route found.")
+        return
+
+    print("Shortest route:")
+    print(" -> ".join(route))
+    print()
+    print(f"Total distance: {distance} m")
 
 
